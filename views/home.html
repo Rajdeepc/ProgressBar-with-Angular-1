@@ -1,47 +1,41 @@
-<h2 class="text-center">AngularJS Boilerplate</h2>
+<div class="wrapper" ng-controller="ProgressController">
 
-<!-- slider directive -->
-<div myslider>
-    <ul class="slider">
-        <li class="image-slider">
-            <img src="https://unsplash.imgix.net/photo-1426200830301-372615e4ac54?fit=crop&fm=jpg&h=725&q=75&w=1050" alt="Image">
-        </li>
-        <li class="image-slider">
-            <img src="https://unsplash.imgix.net/photo-1421977870504-378093748ae6?fit=crop&fm=jpg&h=700&q=75&w=1050" alt="Image">
-        </li>
-        <li class="image-slider">
-            <img src="https://ununsplash.imgix.net/photo-1421757295538-9c80958e75b0?fit=crop&fm=jpg&h=700&q=75&w=1050" alt="Image">
-        </li>
-        <li class="image-slider">
-            <img src="https://unsplash.imgix.net/photo-1420745981456-b95fe23f5753?fit=crop&fm=jpg&h=700&q=75&w=1050" alt="Image">
-        </li>
-        <li class="image-slider">
-            <img src="https://download.unsplash.com/photo-1415871989540-61fe9268d3c8" alt="Image">
-        </li>
-    </ul>
-</div>
-
-<h3>Features</h3>
-<div class="container cf">
-    <div>
-        <ul>
-            <li>* SASS support including sourceMaps</li>
-            <li>* Minimal CSS styling of the view</li>
-            <li>* Gulp watch, build and local server tasks</li>
-            <li>* Responsive navigation</li>
-            <li>* Owl slider directive</li>
-            <li>* Responsive navigation</li>
-            <li>* localStorage service for set, get, remove data</li>
-            <li>* queryService $http wrapper to handle calls</li>
-            <li>* clear folder structure</li>
-            <li>* less than 10 request in build version</li>
-            <li>* minified CSS and JS build files</li>
-            <li>* google analytics snippet</li>
-        </ul>
+    <h3>Progress bar value is {{dynamic}}</h3>
+    <div id="progress1" ng-if="bar.type == 'progress1'">
+        <label for="">Progress Bar 1</label>
+        <progressbar max="max" value="dynamic">
+            <span style="color:black; white-space:nowrap;" ng-model="bar.progress1">
+         {{dynamic}}%
+      </span>
+        </progressbar>
     </div>
-</div>
+    <div id="progress2" ng-if="bar.type == 'progress2'">
+        <label for="">Progress Bar 2</label>
+        <progressbar max="max" value="dynamic">
+            <span style="color:black; white-space:nowrap;" ng-model="bar.progress2">
+         {{dynamic}}%
+      </span>
+        </progressbar>
+    </div>
+    <div id="progress3" ng-if="bar.type == 'progress3'">
+        <label for="">Progress Bar 3</label>
+        <progressbar max="max" value="dynamic" ng-if="bar.type == 'progress3'">
+            <span style="color:black; white-space:nowrap;" ng-model="bar.progress3">
+         {{dynamic}}%
+      </span>
+        </progressbar>
+    </div>
+    <select name="type" ng-model="bar.type" ng-dropdown required>
+       <option value="" ng-show="false"></option>
+            <option ng-option value="progress1" selected='selected'>Progress 1</option>
+            <option ng-option value="progress2">Progress 2</option>
+            <option ng-option value="progress3">Progress 3</option> 
+         </select>
+    <input type="button" ng-click="add10()" value="+10" />
+    <input type="button" ng-click="add25()" value="+25" />
+    <input type="button" ng-click="minus10()" value="-10" />
+    <input type="button" ng-click="minus25()" value="-25" />
+    <input type="button" ng-click="reset()" value="Reset" />
 
-<div class="text-center">
-    <small>Images courtesy of <a target="_blank" href="http://unsplash.com">unsplash.com</a></small>
-</div>
 
+</div>

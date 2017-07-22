@@ -2,98 +2,88 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-csp="" ng-app="boilerplate"> <!--<![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-csp="" ng-app="progress">
+<!--<![endif]-->
 
-	<head>
+<head>
 
-		<base href="/">
-		<meta charset="utf-8">
-		<meta http-equiv="x-ua-compatible" content="ie=edge">
-		<title>AngularJS Boilerplate</title>
-		<meta name="description" content="Simple AngularJS Boilerplate to kick start your new project with SASS support and Gulp watch/build tasks">
+	<base href="/">
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>AngularJS Boilerplate</title>
+	<meta name="description" content="Simple AngularJS Boilerplate to kick start your new project with SASS support and Gulp watch/build tasks">
 
-		<!-- mobile meta -->
-		<meta name="HandheldFriendly" content="True">
-		<meta name="MobileOptimized" content="320">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+	<!-- mobile meta -->
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 
-		<!--[if IE]>
+	<!--[if IE]>
 			<link rel="shortcut icon" href="favicon.ico">
 		<![endif]-->
-		<!-- or, set /favicon.ico for IE10 win -->
-		<meta name="msapplication-TileColor" content="#f01d4f">
+	<!-- or, set /favicon.ico for IE10 win -->
+	<meta name="msapplication-TileColor" content="#f01d4f">
 
-		<!-- CSS -->
-		<!-- build:css css/style.min.css -->
-		<link rel="stylesheet" href="bower_components/OwlCarousel/owl-carousel/owl.carousel.css" />
-		<link rel="stylesheet" type="text/css" href="styles/style.css" />
-		<!-- endbuild -->
-
-	</head>
-
-	<body class="main-wrapper">
-	
-		<!--[if lt IE 8]>
-		    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-		<![endif]-->
-
-		<!-- Navigation -->
-		<main-nav></main-nav>
-
-		<!-- Main view for templates -->
-		<div data-ng-view="" class="container"></div>
-
-	</body>
-
-	<!-- Vendors -->
-	<!-- build:nonangularlibs js/nonangularlibs.js -->
-	<script type="text/javascript" src="js/nonangular/jquery-1.11.2.min.js"></script>
+	<!-- CSS -->
+	<!-- build:css css/style.min.css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="styles/style.css" />
 	<!-- endbuild -->
 
-	<!-- Non-angular libraries -->
-	<!-- build:libs js/libs.js -->
-	<script type="text/javascript" src="js/nonangular/lodash.min.js"></script>
-	<script type="text/javascript" src="js/scripts.js"></script>
-	<script type="text/javascript" src="bower_components/OwlCarousel/owl-carousel/owl.carousel.min.js"></script>
-	<!-- endbuild -->
+</head>
 
-	<!-- Angular external libraries for application -->
-	<!-- build:angularlibs js/angularlibs.js -->
-	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
-	<script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
-	<script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-	<!-- endbuild -->
+<body class="main-wrapper">
+	<div data-ng-view="" class="container">
+		<div class="wrapper" ng-controller="ProgressController">
 
-	<!-- Angular components -->
-	<!-- build:appcomponents js/appcomponents.js -->
+			<h3>Progress bar value is {{dynamic}}</h3>
+			<div id="progress1" ng-if="bar.type == 'progress1'">
+				<h5>Progress Bar 1</h5>
+				<progressbar max="max" value="dynamic">
+					<span style="color:black; white-space:nowrap;" ng-model="bar.progress1">
+         {{dynamic}}%
+      </span>
+				</progressbar>
+			</div>
+			<div id="progress2" ng-if="bar.type == 'progress2'">
+				<h5>Progress Bar 2</h5>
+				<progressbar max="max" value="dynamic">
+					<span style="color:black; white-space:nowrap;" ng-model="bar.progress2">
+         {{dynamic}}%
+      </span>
+				</progressbar>
+			</div>
+			<div id="progress3" ng-if="bar.type == 'progress3'">
+				<h5>Progress Bar 3</h5>
+				<progressbar max="max" value="dynamic" ng-if="bar.type == 'progress3'">
+					<span style="color:black; white-space:nowrap;" ng-model="bar.progress3">
+         {{dynamic}}%
+      </span>
+				</progressbar>
+			</div>
+			<div class="col-xs-5"><select class="form-control" name="type" ng-model="bar.type"  required>
+       		<option value="" ng-show="false"></option>
+            <option ng-option value="progress1" selected='selected'>Progress 1</option>
+            <option ng-option value="progress2">Progress 2</option>
+            <option ng-option value="progress3">Progress 3</option> 
+        	 </select>
+			</div>
+			<div class="col-xs-1"><input class="btn btn-primary" type="button" ng-click="add10()" value="+10" /></div>
+			<div class="col-xs-1"><input class="btn btn-primary" type="button" ng-click="add25()" value="+25" /></div>
+			<div class="col-xs-1"><input class="btn btn-primary" type="button" ng-click="minus10()" value="-10" /></div>
+			<div class="col-xs-1"><input class="btn btn-primary" type="button" ng-click="minus25()" value="-25" /></div>
+			<div class="col-xs-1"><input class="btn btn-primary" type="button" ng-click="reset()" value="Reset" /></div>
+
+
+		</div>
+	</div>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.js"></script>
+	<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
+
 	<script type="text/javascript" src="app/app.js"></script>
-	<script type="text/javascript" src="app/config.js"></script>
-	<script type="text/javascript" src="components/services/LocalStorage.service.js"></script>
-	<script type="text/javascript" src="components/services/queryService.service.js"></script>
-	<script type="text/javascript" src="components/directives/main.nav.directive.js"></script>
-	<script type="text/javascript" src="components/directives/responsive.nav.directive.js"></script>
-	<script type="text/javascript" src="components/directives/owl.slider.directive.js"></script>
-	<!-- endbuild -->
-
-	<!-- Application sections -->
-	<!-- build:mainapp js/mainapp.js -->
-	<script type="text/javascript" src="app/factory.js"></script>
 	<script type="text/javascript" src="app/controller.js"></script>
-	<!-- endbuild -->
-
-	<!-- templates from $templateCache -->
-	<!-- build:templates -->
-	<!-- endbuild -->
-	
-	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-	<script>
-	    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-	    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-	    e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-	    e.src='https://www.google-analytics.com/analytics.js';
-	    r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-	    ga('create','UA-XXXXX-X','auto');ga('send','pageview');
-	</script>
+</body>
 
 </html>

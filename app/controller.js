@@ -1,37 +1,38 @@
-/**
- * Main application controller
- *
- * You can use this controller for your whole app if it is small
- * or you can have separate controllers for each logical section
- * 
- */
-;(function() {
 
-  angular
-    .module('boilerplate')
-    .controller('MainController', MainController);
-
-  MainController.$inject = ['LocalStorage', 'QueryService'];
-
-
-  function MainController(LocalStorage, QueryService) {
+  var ProgressController = function($scope) {
 
     // 'controller as' syntax
     var self = this;
+    $scope.dynamic = 10;
+    $scope.max = 230;
 
+    $scope.add10 = function () {
+      $scope.dynamic = $scope.dynamic + 10;
+    };
+    $scope.add25 = function () {
+      $scope.dynamic = $scope.dynamic + 25;
+    };
+    $scope.minus10 = function () {
+      if ($scope.dynamic > 0) {
+        $scope.dynamic = $scope.dynamic - 10;
+      }
+      else {
+        $scope.dynamic = 0;
+      }
+    };
+    $scope.minus25 = function () {
+      if ($scope.dynamic > 0) {
+        $scope.dynamic = $scope.dynamic - 25;
+      }
+      else {
+        $scope.dynamic = 0;
+      }
 
-    ////////////  function definitions
+    };
+    $scope.reset = function () {
+      $scope.dynamic = 10;
+    };
 
-
-    /**
-     * Load some data
-     * @return {Object} Returned object
-     */
-    // QueryService.query('GET', 'posts', {}, {})
-    //   .then(function(ovocie) {
-    //     self.ovocie = ovocie.data;
-    //   });
   }
 
 
-})();

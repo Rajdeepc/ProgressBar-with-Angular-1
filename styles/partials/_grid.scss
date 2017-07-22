@@ -3,3 +3,26 @@
 Grid
 
 ******************************************************************/
+
+.wrapper {
+    width: 600px;
+    margin: 0 auto;
+    progressbar {
+        display: block;
+        overflow: hidden;
+        margin-bottom: 20px;
+        background-color: #f5f5f5;
+        border-radius: 0px;
+        font-size: 20px;
+        padding: 10px;
+    }
+    #progress1 progressbar{
+        background: yellow
+    }
+    #progress2 progressbar {
+        background: green
+    }
+    #progress3 progressbar{
+        background: pink
+    }
+}
